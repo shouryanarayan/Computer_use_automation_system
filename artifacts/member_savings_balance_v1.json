@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "capability_id": "member.get_savings_balance",
+  "version": "1.0",
+  "status": "APPROVED",
+  "goal_template": "Get the savings balance for member {{member_id}}",
+  "target": {
+    "application": "mock_core_banking",
+    "vendor_family": "demo_vendor",
+    "supported_versions": "*",
+    "base_url": "http://127.0.0.1:8000"
+  },
+  "inputs": {
+    "member_id": {
+      "type": "string",
+      "required": true,
+      "sensitive": true,
+      "description": "5-digit member identifier"
+    }
+  },
+  "outputs": {
+    "savings_balance": {
+      "type": "decimal",
+      "description": "Member's current savings account balance in USD"
+    }
+  },
+  "steps": [
+    {
+      "id": "s0",
+      "action": "activate",
+      "description": "activate button 'OK'",
+      "target": {
+        "primary": {
+          "strategy": "role",
+          "role": "button",
+          "name": "OK",
+          "label": null,
+          "text": null,
+          "css": null
+        },
+        "fallbacks": []
+      },
+      "value": null,
+      "output_key": null,
+      "url": null
+    },
+    {
+      "id": "s1",
+      "action": "type",
+      "description": "type textbox 'Member ID'",
+      "target": {
+        "primary": {
+          "strategy": "role",
+          "role": "textbox",
+          "name": "Member ID",
+          "label": null,
+          "text": null,
+          "css": null
+        },
+        "fallbacks": []
+      },
+      "value": "{{member_id}}",
+      "output_key": null,
+      "url": null
+    },
+    {
+      "id": "s2",
+      "action": "activate",
+      "description": "activate button 'Search'",
+      "target": {
+        "primary": {
+          "strategy": "role",
+          "role": "button",
+          "name": "Search",
+          "label": null,
+          "text": null,
+          "css": null
+        },
+        "fallbacks": []
+      },
+      "value": null,
+      "output_key": null,
+      "url": null
+    },
+    {
+      "id": "s3",
+      "action": "read",
+      "description": "read css '#savings-balance'",
+      "target": {
+        "primary": {
+          "strategy": "css",
+          "role": null,
+          "name": null,
+          "label": null,
+          "text": null,
+          "css": "#savings-balance"
+        },
+        "fallbacks": []
+      },
+      "value": null,
+      "output_key": "savings_balance",
+      "url": null
+    }
+  ],
+  "business_outcomes": [
+    {
+      "code": "MEMBER_NOT_FOUND",
+      "description": "No member record matches the given ID.",
+      "detect": {
+        "type": "text_present",
+        "target": null,
+        "text": "No member found",
+        "url_pattern": null
+      }
+    },
+    {
+      "code": "ACCOUNT_LOCKED",
+      "description": "The member's account is locked; access denied.",
+      "detect": {
+        "type": "text_present",
+        "target": null,
+        "text": "Access Denied",
+        "url_pattern": null
+      }
+    },
+    {
+      "code": "INVALID_MEMBER_ID_FORMAT",
+      "description": "The supplied member ID was not a valid 5-digit number.",
+      "detect": {
+        "type": "text_present",
+        "target": null,
+        "text": "Invalid Member ID",
+        "url_pattern": null
+      }
+    }
+  ],
+  "success_condition": {
+    "type": "text_present",
+    "target": null,
+    "text": "Savings",
+    "url_pattern": null
+  },
+  "risk_class": "READ_ONLY",
+  "created_at": "2026-09-10T02:09:29.694454Z",
+  "created_by": "discovery_agent",
+  "discovery_execution_id": "9d16ae0b-af28-4502-bc1e-48e90485dd32"
+}

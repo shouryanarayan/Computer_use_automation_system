@@ -1,0 +1,28 @@
+# Tenant routing/override config - the seam described in REPORT.md
+# "Heterogeneity & multi-tenant". A capability artifact never embeds a
+# concrete tenant URL (see src/models/capability.py TargetApplication);
+# at replay time the tenant + application id are resolved to a base_url
+# (and, if needed, per-tenant locator overrides) here.
+#
+# Only "default" is actually exercised by this project (it points at
+# the local mock bank). The commented "bank_b" entry is left in to show
+# the shape of a per-tenant override for a second institution running
+# the same underlying vendor product with a different base path and a
+# renamed control - not implemented/tested, see REPORT.md "Cuts".
+
+tenants:
+  default:
+    apps:
+      mock_core_banking:
+        base_url: "http://127.0.0.1:8000"
+        # locator overrides: capability_id -> step_id -> override fields
+        locator_overrides: {}
+
+  # bank_b:
+  #   apps:
+  #     mock_core_banking:
+  #       base_url: "http://127.0.0.1:8000/tenants/bank_b"
+  #       locator_overrides:
+  #         member.get_savings_balance:
+  #           search_member:
+  #             primary: { strategy: role, role: button, name: "Find Member" }

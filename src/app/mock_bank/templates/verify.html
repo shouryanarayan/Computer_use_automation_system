@@ -1,0 +1,17 @@
+<html>
+<head><title>CoreBank Servicing</title></head>
+<body>
+<table border="1" cellpadding="8" cellspacing="0" width="500">
+<tr><td bgcolor="#dddddd"><b>Additional Verification Required</b></td></tr>
+<tr><td>
+This member record requires supervisor verification before it can be
+accessed. Please contact a supervisor to approve this session.
+</td></tr>
+<tr><td align="right">
+<form method="POST" action="/verify/approve/{{ member_id }}">
+<button id="verify-approve" type="submit">Approve</button>
+</form>
+</td></tr>
+</table>
+</body>
+</html>

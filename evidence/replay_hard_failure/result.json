@@ -1,0 +1,19 @@
+{
+  "execution_id": "82b13cd5-dfba-4ecf-8d2d-eb070738c9a1",
+  "capability_id": "member.get_savings_balance",
+  "version": "1.0",
+  "status": "HARD_FAILURE",
+  "outputs": {},
+  "outcome_code": null,
+  "error": {
+    "code": "TARGET_NOT_FOUND",
+    "failed_step": "s3",
+    "expected": "control css '#savings-balance' to be present",
+    "observed": "not found at url http://127.0.0.1:8000/search"
+  },
+  "intervention_id": null,
+  "last_verified_checkpoint": null,
+  "evidence_reference": "/Users/shouryanarayan/Documents/Computer_use_automation_system/evidence/replay_hard_failure/screenshots/s3_target_not_found.png",
+  "started_at": "2026-09-10T02:10:24.690153Z",
+  "completed_at": "2026-09-10T02:10:24.690149Z"
+}

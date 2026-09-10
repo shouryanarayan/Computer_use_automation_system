@@ -1,0 +1,28 @@
+{
+  "members": [
+    {
+      "member_id": "12345",
+      "name": "John Smith",
+      "status": "active",
+      "accounts": { "checking": 1850.00, "savings": 4250.00 }
+    },
+    {
+      "member_id": "23456",
+      "name": "Maria Garcia",
+      "status": "active",
+      "accounts": { "checking": 620.50, "savings": 9120.75 }
+    },
+    {
+      "member_id": "40404",
+      "name": "Robert Chen",
+      "status": "locked",
+      "accounts": { "checking": 100.00, "savings": 300.00 }
+    },
+    {
+      "member_id": "77777",
+      "name": "Angela Torres",
+      "status": "step_up_required",
+      "accounts": { "checking": 500.00, "savings": 2500.00 }
+    }
+  ]
+}

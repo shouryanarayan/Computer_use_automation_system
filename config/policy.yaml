@@ -1,0 +1,47 @@
+# Safety/policy configuration - loaded by src/policy/engine.py.
+# Everything the agent is permitted to do is enumerated here; anything
+# not explicitly allowed is denied by default (allowlist, not denylist).
+
+allowed_domains:
+  - "127.0.0.1:8000"
+  - "localhost:8000"
+
+allowed_action_types:
+  - type
+  - activate
+  - read
+  - navigate
+  - wait_for
+
+# Default risk class per action type, used to classify an action the
+# LLM proposes during discovery (before it's part of an approved
+# artifact, which carries its own risk_class).
+risk_defaults:
+  read: READ_ONLY
+  wait_for: READ_ONLY
+  type: REVERSIBLE
+  navigate: REVERSIBLE
+  activate: REVERSIBLE
+
+# A control whose accessible name contains one of these (case-insensitive)
+# is treated as IRREVERSIBLE regardless of the action-type default -
+# conservative on purpose, see REPORT.md "Safety".
+irreversible_name_keywords:
+  - submit
+  - confirm
+  - delete
+  - close account
+  - approve
+  - transfer
+  - withdraw
+  - verify
+
+# IRREVERSIBLE actions are never auto-executed inline; they require
+# confirmation. Since discovery runs unattended (no synchronous human
+# in the loop), "require confirmation" is implemented as an escalation
+# to the HITL flow rather than blocking outright - see
+# src/policy/engine.py and REPORT.md "Safety" for the trade-off.
+irreversible_requires_confirmation: true
+
+max_steps_per_run: 25
+step_timeout_seconds: 15

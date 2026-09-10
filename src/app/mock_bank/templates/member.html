@@ -1,0 +1,15 @@
+<html>
+<head><title>CoreBank Servicing</title></head>
+<body>
+<table border="0" cellpadding="4" cellspacing="0">
+<tr><td colspan="2"><h2>Member Services</h2></td></tr>
+<tr><td colspan="2">Member: {{ member.name }} (ID {{ member.member_id }})</td></tr>
+<tr><td colspan="2"><b>Accounts</b></td></tr>
+</table>
+<table border="1" cellpadding="6" cellspacing="0">
+<tr><td>Checking</td><td id="checking-balance">${{ '%.2f'|format(member.accounts.checking) }}</td></tr>
+<tr><td>Savings</td><td id="savings-balance">${{ '%.2f'|format(member.accounts.savings) }}</td></tr>
+</table>
+<p><a href="/">New Search</a></p>
+</body>
+</html>

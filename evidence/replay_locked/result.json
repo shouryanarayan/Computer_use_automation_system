@@ -1,0 +1,14 @@
+{
+  "execution_id": "e281f3fa-16a0-433e-bdd6-3738ce219e5d",
+  "capability_id": "member.get_savings_balance",
+  "version": "1.0",
+  "status": "BUSINESS_OUTCOME",
+  "outputs": {},
+  "outcome_code": "ACCOUNT_LOCKED",
+  "error": null,
+  "intervention_id": null,
+  "last_verified_checkpoint": null,
+  "evidence_reference": null,
+  "started_at": "2026-09-10T02:09:56.518213Z",
+  "completed_at": "2026-09-10T02:09:56.672660Z"
+}

@@ -1,0 +1,16 @@
+{
+  "execution_id": "c5ff7bf2-2d9f-47d5-80be-adcf1bb8c513",
+  "capability_id": "member.get_savings_balance",
+  "version": "1.0",
+  "status": "SUCCESS",
+  "outputs": {
+    "savings_balance": 2500.0
+  },
+  "outcome_code": null,
+  "error": null,
+  "intervention_id": null,
+  "last_verified_checkpoint": "text_present",
+  "evidence_reference": null,
+  "started_at": "2026-09-10T02:10:14.496765Z",
+  "completed_at": "2026-09-10T02:10:14.763728Z"
+}

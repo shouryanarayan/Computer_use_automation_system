@@ -1,0 +1,10 @@
+URL: http://127.0.0.1:8000/search
+
+Controls (role 'name'):
+button 'Approve'
+
+Visible text:
+Additional Verification Required
+This member record requires supervisor verification before it can be accessed. Please contact a supervisor to approve this session.
+
+Approve

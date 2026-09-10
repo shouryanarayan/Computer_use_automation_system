@@ -1,0 +1,24 @@
+<html>
+<head><title>CoreBank Servicing</title></head>
+<body>
+<table border="0" cellpadding="4" cellspacing="0">
+<tr><td colspan="2"><h2>Member Services</h2></td></tr>
+{% if error %}
+<tr><td colspan="2"><p class="error">{{ error }}</p></td></tr>
+{% endif %}
+<tr><td colspan="2">
+<form method="POST" action="/search">
+<table border="0" cellpadding="4" cellspacing="0">
+<tr>
+<td><label for="member_id">Member ID</label></td>
+<td><input id="member_id" name="member_id" type="text" size="20"></td>
+</tr>
+<tr>
+<td colspan="2" align="right"><button type="submit">Search</button></td>
+</tr>
+</table>
+</form>
+</td></tr>
+</table>
+</body>
+</html>

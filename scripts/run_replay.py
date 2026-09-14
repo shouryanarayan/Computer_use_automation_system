@@ -25,7 +25,7 @@ from src.observability.evidence import scenario_dir
 from src.observability.logger import RunLogger
 from src.policy.engine import PolicyEngine
 from src.policy.redaction import redact_params
-from src.registry.capability_registry import CapabilityRegistry
+from src.registry.capability_registry import CapabilityNotFoundError, CapabilityRegistry
 from src.replay.executor import ReplayExecutor
 from src.surface.playwright_adapter import PlaywrightAdapter
 
@@ -33,7 +33,12 @@ from src.surface.playwright_adapter import PlaywrightAdapter
 async def main(capability_id: str, member_id: str, scenario: str, headless: bool) -> int:
     repo = get_repository()
     registry = CapabilityRegistry(repo)
-    artifact = registry.get_replayable_artifact(capability_id)
+    try:
+        artifact = registry.get_replayable_artifact(capability_id)
+    except CapabilityNotFoundError as e:
+        print(f"error: {e}", file=sys.stderr)
+        print("Run discovery and promote it first: python run_discovery.py && python promote_artifact.py " + capability_id, file=sys.stderr)
+        return 1
 
     execution_id = str(uuid.uuid4())
     started_at = datetime.now(timezone.utc)
